@@ -8,6 +8,6 @@ class Main {
                 throw new IllegalArgumentException("Only positive numbers allowed");
             }
         });
-        return 0;
+        return arr.length;
     }
 }
