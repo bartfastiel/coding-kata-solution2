@@ -1,10 +1,6 @@
-import java.util.*;
-import java.io.*;
-
 class Main {
 
-  public static int LongestIncreasingSequence(int[] arr) {
-    // code goes here  
-    return arr[0];
-  }
+    public static int LongestIncreasingSequence(int[] arr) {
+        return 0;
+    }
 }
