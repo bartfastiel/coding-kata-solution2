@@ -36,4 +36,17 @@ class MainTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    void performanceTest() {
+        long startTime = System.currentTimeMillis();
+        int[] input = new int[100_000_000];
+        for (int i = 0; i < input.length; i++) {
+            input[i] = i;
+        }
+        Main.LongestIncreasingSequence(input);
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("Duration: " + duration + "ms");
+    }
+
 }
