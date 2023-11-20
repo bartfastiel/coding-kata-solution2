@@ -16,16 +16,11 @@ class Main {
         }
         var value = arr[start];
 
-        // if the value is equal to the minimum, it is always a good idea to include it
-        if (value == minimum) {
-            return findLongestPossibleSequence(arr, start + 1, minimum) + 1;
-        }
-
         // what if we do not include this value?
         int lengthWithoutCurrentValue = findLongestPossibleSequence(arr, start + 1, minimum);
 
         // do we have to skip this value, because it is too small?
-        if (value < minimum) {
+        if (value <= minimum) {
             return lengthWithoutCurrentValue;
         }
 
