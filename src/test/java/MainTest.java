@@ -20,6 +20,8 @@ class MainTest {
             "1=1",
             "999=1",
             "1,2=2",
+            "2,1=1",
+            "1,1=2",
     }, delimiter = '=')
     void check(String input, int expected) {
         int[] data;
