@@ -39,7 +39,7 @@ class MainTest {
     @Test
     void performanceTest() {
         long startTime = System.currentTimeMillis();
-        int[] input = new int[10_000];
+        int[] input = new int[100_000];
         for (int i = 0; i < input.length; i++) {
             input[i] = i;
         }
