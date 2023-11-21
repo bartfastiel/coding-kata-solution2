@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 class Main {
@@ -7,27 +8,20 @@ class Main {
             throw new IllegalArgumentException("Only positive numbers allowed");
         }
 
-        return findLongestPossibleSequence(arr, 0, 0);
-    }
+        var listOfThresholds = new ArrayList<Integer>();
 
-    private static int findLongestPossibleSequence(int[] arr, int start, int minimum) {
-        if (start >= arr.length) {
-            return 0;
-        }
-        var value = arr[start];
-
-        // what if we do not include this value?
-        int lengthWithoutCurrentValue = findLongestPossibleSequence(arr, start + 1, minimum);
-
-        // do we have to skip this value, because it is too small?
-        if (value <= minimum) {
-            return lengthWithoutCurrentValue;
+        iterateOverValues:
+        for (int i = 0; i < arr.length; i++) {
+            var value = arr[i];
+            for (int j = 0; j < listOfThresholds.size(); j++) {
+                if (value <= listOfThresholds.get(j)) {
+                    listOfThresholds.set(j, value);
+                    continue iterateOverValues;
+                }
+            }
+            listOfThresholds.add(value);
         }
 
-        int lengthIfWeChooseTheCurrentValue = findLongestPossibleSequence(arr, start + 1, value) + 1;
-        return Math.max(
-                lengthWithoutCurrentValue,
-                lengthIfWeChooseTheCurrentValue
-        );
+        return listOfThresholds.size();
     }
 }
