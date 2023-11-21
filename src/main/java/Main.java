@@ -11,16 +11,17 @@ class Main {
         var thresholds = new int[arr.length];
         var length = 0;
 
-        iterateOverValues:
         for (int i = 0; i < arr.length; i++) {
             var value = arr[i];
+            if (length == 0 || thresholds[length-1] < value) {
+                thresholds[length++] = value;
+                continue;
+            }
             for (int j = 0; j < length; j++) {
                 if (value <= thresholds[j]) {
                     thresholds[j] = value;
-                    continue iterateOverValues;
                 }
             }
-            thresholds[length++] = value;
         }
 
         return length;

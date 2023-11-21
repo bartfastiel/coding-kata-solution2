@@ -7,6 +7,8 @@ import static java.util.Arrays.stream;
 
 class MainTest {
 
+    public static final int PERFORMANCE_TEST_AMOUNT_OF_NUMBERS = 10_000_000;
+
     @Test
     void expectException_whenUsingNegatives() {
         Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -37,12 +39,25 @@ class MainTest {
     }
 
     @Test
-    void performanceTest() {
-        long startTime = System.currentTimeMillis();
-        int[] input = new int[100_000];
+    void performanceTest_increasingNumbers() {
+        int[] input = new int[PERFORMANCE_TEST_AMOUNT_OF_NUMBERS];
         for (int i = 0; i < input.length; i++) {
             input[i] = i;
         }
+        long startTime = System.currentTimeMillis();
+        Main.LongestIncreasingSequence(input);
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("Duration: " + duration + "ms");
+    }
+
+    @Test
+    void performanceTest_decreasingNumbers() {
+        int[] input = new int[PERFORMANCE_TEST_AMOUNT_OF_NUMBERS];
+        for (int i = 0; i < input.length; i++) {
+            input[i] = PERFORMANCE_TEST_AMOUNT_OF_NUMBERS - i;
+        }
+        long startTime = System.currentTimeMillis();
         Main.LongestIncreasingSequence(input);
         long endTime = System.currentTimeMillis();
         long duration = endTime - startTime;
