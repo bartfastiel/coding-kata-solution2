@@ -7,8 +7,8 @@ class Main {
             throw new IllegalArgumentException("Only positive numbers allowed");
         }
 
-        var thresholds = new int[arr.length];
-        var length = 0;
+        int[] thresholds = new int[arr.length];
+        int length = 0;
 
         for (int value : arr) {
             if (length == 0 || thresholds[length - 1] < value) {
@@ -26,10 +26,10 @@ class Main {
     }
 
     private static void useBinarySearchToLowerOneThreshold(int[] thresholds, int length, int value) {
-        var left = 0;
-        var right = length - 1;
+        int left = 0;
+        int right = length - 1;
         while (left < right) {
-            var middle = (left + right) / 2;
+            int middle = (left + right) / 2;
             if (thresholds[middle] < value) {
                 left = middle + 1;
             } else {
