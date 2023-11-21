@@ -29,6 +29,8 @@ class MainTest {
             "1,2,1=2",
             "1,3,2,3=3",
             "9,9,4,2=1",
+            "1,3,2=2",
+            "10,22,9,33,21,50,41,60,22,68,90=7",
     }, delimiter = '=')
     void check(String input, int expected) {
         int[] data;

@@ -15,7 +15,7 @@ class Main {
                 thresholds[length++] = value;
                 continue;
             }
-            if (thresholds[0] > value) {
+            if (value < thresholds[0]) {
                 thresholds[0] = value;
                 continue;
             }
