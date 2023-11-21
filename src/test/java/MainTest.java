@@ -70,7 +70,7 @@ class MainTest {
     @Test
     void performanceTest_randomNumbers() {
         Random random = new Random(42);
-        int[] input = new int[100_000];
+        int[] input = new int[PERFORMANCE_TEST_AMOUNT_OF_NUMBERS];
         for (int i = 0; i < input.length; i++) {
             input[i] = random.nextInt(MAX_VALUE);
         }

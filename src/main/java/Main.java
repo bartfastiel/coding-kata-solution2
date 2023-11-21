@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 
 class Main {
@@ -13,17 +12,31 @@ class Main {
 
         for (int i = 0; i < arr.length; i++) {
             var value = arr[i];
-            if (length == 0 || thresholds[length-1] < value) {
+            if (length == 0 || thresholds[length - 1] < value) {
                 thresholds[length++] = value;
                 continue;
             }
-            for (int j = 0; j < length; j++) {
-                if (value <= thresholds[j]) {
-                    thresholds[j] = value;
-                }
+            if (thresholds[0] > value) {
+                thresholds[0] = value;
+                continue;
             }
+            useBinarySearchToLowerOneThreshold(thresholds, length, value);
         }
 
         return length;
+    }
+
+    private static void useBinarySearchToLowerOneThreshold(int[] thresholds, int length, int value) {
+        var left = 0;
+        var right = length - 1;
+        while (left < right) {
+            var middle = (left + right) / 2;
+            if (thresholds[middle] < value) {
+                left = middle + 1;
+            } else {
+                right = middle;
+            }
+        }
+        thresholds[right] = value;
     }
 }
