@@ -3,6 +3,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.Random;
+
+import static java.lang.Integer.MAX_VALUE;
 import static java.util.Arrays.stream;
 
 class MainTest {
@@ -56,6 +59,20 @@ class MainTest {
         int[] input = new int[PERFORMANCE_TEST_AMOUNT_OF_NUMBERS];
         for (int i = 0; i < input.length; i++) {
             input[i] = PERFORMANCE_TEST_AMOUNT_OF_NUMBERS - i;
+        }
+        long startTime = System.currentTimeMillis();
+        Main.LongestIncreasingSequence(input);
+        long endTime = System.currentTimeMillis();
+        long duration = endTime - startTime;
+        System.out.println("Duration: " + duration + "ms");
+    }
+
+    @Test
+    void performanceTest_randomNumbers() {
+        Random random = new Random(42);
+        int[] input = new int[100_000];
+        for (int i = 0; i < input.length; i++) {
+            input[i] = random.nextInt(MAX_VALUE);
         }
         long startTime = System.currentTimeMillis();
         Main.LongestIncreasingSequence(input);
