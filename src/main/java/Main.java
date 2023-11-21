@@ -10,8 +10,7 @@ class Main {
         var thresholds = new int[arr.length];
         var length = 0;
 
-        for (int i = 0; i < arr.length; i++) {
-            var value = arr[i];
+        for (int value : arr) {
             if (length == 0 || thresholds[length - 1] < value) {
                 thresholds[length++] = value;
                 continue;
