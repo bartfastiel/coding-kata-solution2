@@ -8,20 +8,21 @@ class Main {
             throw new IllegalArgumentException("Only positive numbers allowed");
         }
 
-        var listOfThresholds = new ArrayList<Integer>();
+        var thresholds = new int[arr.length];
+        var length = 0;
 
         iterateOverValues:
         for (int i = 0; i < arr.length; i++) {
             var value = arr[i];
-            for (int j = 0; j < listOfThresholds.size(); j++) {
-                if (value <= listOfThresholds.get(j)) {
-                    listOfThresholds.set(j, value);
+            for (int j = 0; j < length; j++) {
+                if (value <= thresholds[j]) {
+                    thresholds[j] = value;
                     continue iterateOverValues;
                 }
             }
-            listOfThresholds.add(value);
+            thresholds[length++] = value;
         }
 
-        return listOfThresholds.size();
+        return length;
     }
 }
